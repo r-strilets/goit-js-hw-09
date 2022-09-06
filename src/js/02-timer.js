@@ -60,14 +60,12 @@ function onClickTimerBegin(e) {
     const currentDate = new Date().getTime();
     timeLeft = selectedTime - currentDate;
     if (timeLeft >= 0) {
+      // refs.forEach(ref => )
       refs.days.innerHTML = addLeadingZero(convertMs(timeLeft).days);
       refs.hours.innerHTML = addLeadingZero(convertMs(timeLeft).hours);
       refs.minutes.innerHTML = addLeadingZero(convertMs(timeLeft).minutes);
       refs.seconds.innerHTML = addLeadingZero(convertMs(timeLeft).seconds);
     }
-    // if (timeLeft <= 1) {
-    //   clearInterval(interval);
-    // }
   }, 1000);
 
   e.target.disabled = true;
