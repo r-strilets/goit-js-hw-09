@@ -55,10 +55,10 @@ function addLeadingZero(value) {
 
 function onClickTimerBegin(e) {
   const selectedTime = new Date(someInput.value).getTime();
-  let timeLeft = null;
+
   const interval = setInterval(() => {
     const currentDate = new Date().getTime();
-    timeLeft = selectedTime - currentDate;
+    let timeLeft = selectedTime - currentDate;
     if (timeLeft >= 0) {
       // refs.forEach(ref => )
       refs.days.innerHTML = addLeadingZero(convertMs(timeLeft).days);
