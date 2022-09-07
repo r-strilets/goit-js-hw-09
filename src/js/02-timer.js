@@ -2,7 +2,7 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 const someInput = document.querySelector('input[type="text"]');
 const buttonStart = document.querySelector('[data-start]');
-refs = {
+timeRefs = {
   days: document.querySelector('[data-days]'),
   hours: document.querySelector('[data-hours]'),
   minutes: document.querySelector('[data-minutes]'),
@@ -52,19 +52,24 @@ function inputValue(e) {
 function addLeadingZero(value) {
   return value.toString().padStart(2, '0');
 }
+// function timeRefsToDate(timeRefs, timeLeft) {
+//   timeRefs.forEach(element => {
+//     return convertMs(timeLeft);
+//   });
+// }
 
 function onClickTimerBegin(e) {
   const selectedTime = new Date(someInput.value).getTime();
 
-  const interval = setInterval(() => {
+  setInterval(() => {
     const currentDate = new Date().getTime();
     let timeLeft = selectedTime - currentDate;
+
     if (timeLeft >= 0) {
-      // refs.forEach(ref => )
-      refs.days.innerHTML = addLeadingZero(convertMs(timeLeft).days);
-      refs.hours.innerHTML = addLeadingZero(convertMs(timeLeft).hours);
-      refs.minutes.innerHTML = addLeadingZero(convertMs(timeLeft).minutes);
-      refs.seconds.innerHTML = addLeadingZero(convertMs(timeLeft).seconds);
+      timeRefs.days.innerHTML = addLeadingZero(convertMs(timeLeft).days);
+      timeRefs.hours.innerHTML = addLeadingZero(convertMs(timeLeft).hours);
+      timeRefs.minutes.innerHTML = addLeadingZero(convertMs(timeLeft).minutes);
+      timeRefs.seconds.innerHTML = addLeadingZero(convertMs(timeLeft).seconds);
     }
   }, 1000);
 
