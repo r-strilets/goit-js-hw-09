@@ -1,3 +1,4 @@
+// import Notiflix from 'notiflix';
 const formSubmit = document.querySelector('.form');
 
 const delay = document.querySelector('[name="delay"]');
@@ -9,11 +10,13 @@ let position = null;
 function createPromise(position, delay) {
   const promise = new Promise((resolve, reject) => {
     const shouldResolve = Math.random() > 0.3;
-    if (shouldResolve) {
-      resolve(resp => resp);
-    } else {
-      reject(err => err);
-    }
+    setTimeout(() => {
+      if (shouldResolve) {
+        resolve({ position, delay });
+      } else {
+        reject({ position, delay });
+      }
+    }, delay);
   });
   promise
     .then(({ position, delay }) => {
@@ -32,9 +35,11 @@ function onClickSubmit(e) {
   const { delay, step, amount } = e.target.elements;
 
   for (let i = 1; i <= amount.value; i += 1) {
-    position += +step.value;
-
+    position += 1;
+    delay.value = Number(step.value) + Number(delay.value);
     createPromise(position, delay.value);
   }
-  formSubmit.reset();
+  console.clear();
+  position = 0;
+  e.target.reset();
 }
