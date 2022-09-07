@@ -34,7 +34,7 @@ function onClickSubmit(e) {
   for (let i = 1; i <= amount.value; i += 1) {
     position += +step.value;
 
-    createPromise(position, delay);
+    createPromise(position, delay.value);
   }
   formSubmit.reset();
 }
