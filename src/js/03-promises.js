@@ -10,16 +10,16 @@ function createPromise(position, delay) {
   const promise = new Promise((resolve, reject) => {
     const shouldResolve = Math.random() > 0.3;
     if (shouldResolve) {
-      resolve();
+      resolve(resp => resp);
     } else {
-      reject();
+      reject(err => err);
     }
   });
   promise
-    .then((position, delay) => {
+    .then(({ position, delay }) => {
       console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
     })
-    .catch((position, delay) => {
+    .catch(({ position, delay }) => {
       console.log(`❌ Rejected promise ${position} in ${delay}ms`);
     });
 }
