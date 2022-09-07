@@ -41,7 +41,7 @@ function onClickSubmit(e) {
     delay.value = Number(step.value) + Number(delay.value);
     createPromise(position, delay.value);
   }
-  console.clear();
+  // console.clear();
   position = 0;
   e.target.reset();
 }
